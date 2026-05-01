@@ -23,5 +23,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Gate::policy(Leads::class, LeadsPolicy::class);
+        if (config('app.env') === 'production') {
+            URL::forceScheme('https');
+        }
     }
 }
