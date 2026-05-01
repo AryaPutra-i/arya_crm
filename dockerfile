@@ -29,7 +29,7 @@ COPY . .
 
 EXPOSE 8000
 
-RUN composer install
+RUN composer install --ignore-platform-req=ext-intl --ignore-platform-req=ext-zip
 RUN npm install
 
 CMD php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8000
