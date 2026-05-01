@@ -43,8 +43,8 @@ class ProjectForm
                             ->label('Quantity')
                             ->numeric()
                             ->required(),       
-                        TextInput::make('harga_satuan')
-                            ->label('Harga Satuan')
+                        TextInput::make('harga_dasar')
+                            ->label('Harga Dasar')
                             ->numeric()
                             ->required(),
                     ]),

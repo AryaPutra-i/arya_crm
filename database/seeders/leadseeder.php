@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -15,6 +16,13 @@ class leadseeder extends Seeder
     public function run(): void
     {
         $now = Carbon::now();
+        $salesUsers = User::where('role', 'sales')->pluck('id');
+
+        if ($salesUsers->isEmpty()) {
+            // Optional: Pesan ini akan muncul jika tidak ada user dengan role 'sales'
+            $this->command->info('Tidak ada user sales. Seeder lead tidak akan menugaskan sales_id.');
+            return;
+        }
 
         DB::table('leads')->insert([
             [
@@ -23,6 +31,7 @@ class leadseeder extends Seeder
                 'phone' => '081234567890',
                 'kebutuhan' => 'Paket Internet 50Mbps',
                 'status' => 0,
+                'sales_id' => $salesUsers->random(),
                 'created_at' => $now,
                 'updated_at' => $now,
             ],
@@ -32,6 +41,7 @@ class leadseeder extends Seeder
                 'phone' => '081298765432',
                 'kebutuhan' => 'Paket Internet 100Mbps',
                 'status' => 0,
+                'sales_id' => $salesUsers->random(),
                 'created_at' => $now,
                 'updated_at' => $now,
             ],
@@ -41,6 +51,7 @@ class leadseeder extends Seeder
                 'phone' => '085711223344',
                 'kebutuhan' => 'Dedicated Internet 20Mbps',
                 'status' => 0,
+                'sales_id' => $salesUsers->random(),
                 'created_at' => $now,
                 'updated_at' => $now,
             ],
@@ -50,6 +61,7 @@ class leadseeder extends Seeder
                 'phone' => '081344556677',
                 'kebutuhan' => 'Paket Internet 50Mbps',
                 'status' => 0,
+                'sales_id' => $salesUsers->random(),
                 'created_at' => $now,
                 'updated_at' => $now,
             ],
@@ -59,6 +71,7 @@ class leadseeder extends Seeder
                 'phone' => '081999888777',
                 'kebutuhan' => 'Paket Internet 100Mbps',
                 'status' => 0,
+                'sales_id' => $salesUsers->random(),
                 'created_at' => $now,
                 'updated_at' => $now,
             ],
@@ -68,6 +81,7 @@ class leadseeder extends Seeder
                 'phone' => '087812312312',
                 'kebutuhan' => 'Paket Broadband 20Mbps',
                 'status' => 0,
+                'sales_id' => $salesUsers->random(),
                 'created_at' => $now,
                 'updated_at' => $now,
             ],
@@ -77,6 +91,7 @@ class leadseeder extends Seeder
                 'phone' => '081122223333',
                 'kebutuhan' => 'Dedicated Internet 50Mbps',
                 'status' => 0,
+                'sales_id' => $salesUsers->random(),
                 'created_at' => $now,
                 'updated_at' => $now,
             ],
@@ -86,6 +101,7 @@ class leadseeder extends Seeder
                 'phone' => '085677778888',
                 'kebutuhan' => 'Paket Internet 50Mbps',
                 'status' => 0,
+                'sales_id' => $salesUsers->random(),
                 'created_at' => $now,
                 'updated_at' => $now,
             ],
@@ -95,6 +111,7 @@ class leadseeder extends Seeder
                 'phone' => '082233445566',
                 'kebutuhan' => 'Paket Internet 100Mbps',
                 'status' => 0,
+                'sales_id' => $salesUsers->random(),
                 'created_at' => $now,
                 'updated_at' => $now,
             ],
@@ -104,6 +121,7 @@ class leadseeder extends Seeder
                 'phone' => '089911112222',
                 'kebutuhan' => 'Paket Broadband 20Mbps',
                 'status' => 0,
+                'sales_id' => $salesUsers->random(),
                 'created_at' => $now,
                 'updated_at' => $now,
             ]

@@ -38,6 +38,7 @@ class DatabaseSeeder extends Seeder
             'role' => 'sales'
         ]);
 
-       
+        $this->call(leadseeder::class);
+        $this->call(ProjectSeeder::class);
     }
 }

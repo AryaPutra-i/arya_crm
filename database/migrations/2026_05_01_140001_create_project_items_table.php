@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('project_id')->constrained('projects')->onDelete('cascade');
             $table->foreignId('produk_id')->constrained('produks')->onDelete('cascade');
             $table->integer('quantity')->default(1);
-            $table->decimal('harga_dasar', 12, 2);
+            $table->decimal('harga_dasar', 12, 2)->nullable();
             $table->decimal('harga_negosiasi', 12, 2)->nullable();
             $table->timestamps();
         });
