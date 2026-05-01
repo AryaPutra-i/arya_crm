@@ -20,6 +20,11 @@ RUN apt-get update && apt-get install -y \
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+RUN php artisan filament:assets
+RUN php artisan config:cache
+RUN php artisan route:cache
+RUN php artisan view:cache
+
 RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - && apt-get install -y nodejs
 
 WORKDIR /var/www/html
