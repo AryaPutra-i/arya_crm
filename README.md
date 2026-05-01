@@ -1,5 +1,5 @@
 # CRM PT.SMART
-Demo : aryacrm-production.up.railway.app
+Demo : https://aryacrm-production-f9ce.up.railway.app
 
 Tect Stack
 > Framework : Laravel 13
